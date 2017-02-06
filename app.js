@@ -15,6 +15,11 @@ var dt;
 var formattedDate;
 var mongoose = require('mongoose');
 
+const methodOverride = require('method-override');
+const restify = require('express-restify-mongoose');
+const router = express.Router();
+
+var Thesis = require('./models/thesis');
 var index = require('./routes/index');
 var collection = require('./routes/admin');
 var auth = require('./routes/auth');
@@ -25,8 +30,8 @@ var forgot = require('./routes/forgot');
 
 var app = express();
 
-//var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
-var mdbUrl = "mongodb://root:password@ds131119.mlab.com:31119/coen3463-m4t5";
+var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
+//var mdbUrl = "mongodb://root:password@ds131119.mlab.com:31119/coen3463-m4t5";
 
 var db = require('./db'); //mongoose is in db.js
 
@@ -68,7 +73,8 @@ db.connect(mdbUrl, function(err) {
 		// Passport init
 		app.use(passport.initialize());
 		app.use(passport.session());
-
+		restify.serve(router, Thesis);
+		app.use(router);
 		// Express Validator
 		app.use(expressValidator({
 		  errorFormatter: function(param, msg, value) {
