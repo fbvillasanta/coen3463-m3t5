@@ -14,26 +14,30 @@ block content
 					.row.animate-box.row-pb-md(data-animate-effect='fadeInUp')
 						.col-md-8.col-md-offset-2.text-center.fh5co-heading
 							span Thoughts & Ideas
+							h3.countThesis
+								span#countTotal
 							h2 Our Collection
 							p
 								| This is a basically a compilation of awesome ideas that may change the world.
 							br
-							form#search(action='#', method='post')
+							form#search(action='/collection', method='post', onsubmit='getSearch()')
 								.input-group
 									span.input-group-addon#basic-addon1 Thesis Title
-									input.form-control(type='text', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
+									input.form-control#search(type='search', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
 									.span.input-group-btn
 										input.btn.btn-danger(type="submit" value='Go!')
+
+
 					.row
-					for entry in entries
-							.col-md-3.col-sm-4.animate-box(data-animate-effect='fadeInUp')
-								.fh5co-post
-									span.fh5co-date #{entry.added}
-									h3
-										a(href='/collection/' + entry._id) #{entry.thesis}
-									p
-										| #{entry.sentence}
-					
+						#thesis-body
+							//.col-md-3.col-sm-4.animate-box(data-animate-effect='fadeInUp')
+							//	.fh5co-post
+							//		span.fh5co-date #{entry.added}
+							//		h3
+							//			a(href='/collection/' + entry._id) #{entry.thesis}
+							//		p
+							//			| #{entry.sentence}
+
 //						.col-md-12.text-center
 //							nav(aria-label='Page navigation')
 //								ul.pagination
