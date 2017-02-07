@@ -30,7 +30,7 @@ var forgot = require('./routes/forgot');
 
 var app = express();
 
-var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
+//var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
 var mdbUrl = "";
 
 var db = require('./db'); //mongoose is in db.js

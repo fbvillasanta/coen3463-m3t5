@@ -1747,6 +1747,7 @@ h1, h2, h3, h4, h5, h6, figure {
 #collectiontitle {
   text-transform: none !important;
   color: #f35f55 !important;
+  font-size: 55px !important;
 }
 
 #collectiontitle > span {

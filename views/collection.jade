@@ -23,9 +23,9 @@ block content
 							form#search(action='/collection', method='post', onsubmit='getSearch()')
 								.input-group
 									span.input-group-addon#basic-addon1 Thesis Title
-									input.form-control#search(type='search', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
+									input.form-control#searchbox(type='search', aria-describedby='basic-addon1', placeholder='Looking for something in particular?')
 									.span.input-group-btn
-										input.btn.btn-danger(type="submit" value='Go!')
+										input.btn.btn-danger#searchbtn(type="submit" value='Go!')
 
 
 					.row

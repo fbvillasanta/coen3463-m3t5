@@ -21,7 +21,7 @@ block content
                         th Last Name
                         th First Name
                         th Email
-                    tbody
+                    tbody#table-body-users
                       for entry in entries
                         if entry.type === 'user'
                           tr
@@ -50,7 +50,7 @@ block content
                         th Last Name
                         th First Name
                         th Email
-                    tbody
+                    tbody#table-body-admins
                       for entry in entries
                         if entry.type === 'admin'
                           tr
@@ -140,10 +140,11 @@ block content
                               li
                                 b Youtube link: 
                                 | #{entry.details.youtube}
-                        td
+                        td(id='#{entry._id}')
                           form(method='post', action='/admin/add/'+ entry._id)
-                            button.btn.btn-success.btn-flat(type='submit', value='accept', name='btn') Appove
-                            button.btn.btn-danger.btn-flat(type='submit', value='DELETE', name='_method') Delete
+                            button.btn.btn-success.btn-flat#approveAdd(type='submit', value='accept', name='btn') Appove
+                            button.btn.btn-danger.btn-flat#deleteAdd(type='submit', value='DELETE', name='_method') Delete
+                        
                   tfoot
                     tr
                       th Request By
