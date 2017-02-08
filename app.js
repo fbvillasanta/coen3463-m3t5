@@ -35,7 +35,6 @@ var mdbUrl = "";
 
 var db = require('./db'); //mongoose is in db.js
 
-//var mdbUrl = "mongodb://127.0.0.1:27017/thesisIt";
 db.connect(mdbUrl, function(err) {
 	if (err) {
 		console.log('Unable to connect to mongoose');
