@@ -20,6 +20,8 @@ const restify = require('express-restify-mongoose');
 const router = express.Router();
 
 var Thesis = require('./models/thesis');
+var User = require('./models/user');
+var Request = require('./models/request');
 var index = require('./routes/index');
 var collection = require('./routes/admin');
 var auth = require('./routes/auth');
@@ -73,6 +75,8 @@ db.connect(mdbUrl, function(err) {
 		app.use(passport.initialize());
 		app.use(passport.session());
 		restify.serve(router, Thesis);
+		restify.serve(router, User);
+		restify.serve(router, Request);
 		app.use(router);
 		// Express Validator
 		app.use(expressValidator({

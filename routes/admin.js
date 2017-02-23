@@ -311,13 +311,14 @@ router.delete('/:thesisId',function(req,res,next) {
 
     collection.findOne({ '_id': ObjectId(thesisId) },  function(err, entry) {
         if (err) {
-            res.send("There was a problem deleting an entry to the database: " + err);
+            res.send({'message':"There was a problem deleting an entry to the database: " + err});
         }
         else {
             Request.find({'details.id': thesisId, 'type' : 'delete'}, function(err, exist){
                 if(exist.length && !err){
-                    req.flash('error_msg', 'Delete request for that entry already exists.');
-                    res.redirect('/collection/'+thesisId);
+                    // req.flash('error_msg', 'Delete request for that entry already exists.');
+                    // res.redirect('/collection/'+thesisId);
+                    res.send({'message': 'Delete request for that entry already exists.'});
                     console.log('Exist')
                 } else if(!exist.length && !err){
                     var data = new Request({
@@ -339,11 +340,12 @@ router.delete('/:thesisId',function(req,res,next) {
                     });
                     data.save();
                     console.log('Request for delete sent.');
-                    req.flash('success_msg', 'Request for delete was sent to admin. An email will be sent to you when your request is approved.');
-                    res.redirect("/collection/"+thesisId) ;
+                    // req.flash('success_msg', 'Request for delete was sent to admin. An email will be sent to you when your request is approved.');
+                    // res.redirect("/collection/"+thesisId) ;
+                    res.status(200).send({'message': 'Request for delete was sent to admin. An email will be sent to you when your request is approved.'});
                     console.log(entry);
                 } else {
-                    res.status(500).send({'message': 'not found'});
+                    res.send({'message': 'Thesis entry was not found.'});
                 }
             })
         }

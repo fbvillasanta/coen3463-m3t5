@@ -36,6 +36,20 @@ $('#searchbtn').on('click', function(e){
   }
 });
 
+$('#deleteItem').on('click', function(e){
+    e.preventDefault();
+    var href = document.getElementById('deleteItem').getAttribute('href');
+    console.log(href);
+    $.ajax({
+      url: href,
+      type:'DELETE'
+    }).done(function(res){
+      alert(res.message);
+    }).fail(function(res){
+      alert(res.message);
+    });
+});
+
 
 $(document).ready(function() {
 
@@ -69,9 +83,7 @@ $(document).ready(function() {
         fetch('api/v1/Thesis/count').then(function(res) {
             res.json().then(function(count) {
                 $('#collectiontitle').html("Total: <span><u>" + count.count+ "</u></span>  entries");
-
-
-                });
+            });
 
         });
 

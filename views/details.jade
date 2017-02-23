@@ -21,7 +21,7 @@ block content
                 form(action='/collection/' + entry._id, method='post')
                   a.btn.btn-primary(href='/collection/#{entry._id}/edit') Edit
                   input(type='hidden',value='DELETE',name='_method')
-                  button.btn.btn-danger(type='submit')
+                  a.btn.btn-danger#deleteItem(href='/collection/' + entry._id)
                       | Delete
           .row.row-pb-md.animate-box
             .col-md-6.col-md-push-6
@@ -71,10 +71,10 @@ block content
                     h3 #{member}
                     strong.role Researcher
 
-      if success_msg != ""
-        script(type='text/javascript').
-          alert('#{success_msg}');
-      if error_msg != ""
-        script(type='text/javascript').
-          alert('#{error_msg}')
+      //- if success_msg != ""
+      //-   script(type='text/javascript').
+      //-     alert('#{success_msg}');
+      //- if error_msg != ""
+      //-   script(type='text/javascript').
+      //-     alert('#{error_msg}')
 
