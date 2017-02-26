@@ -50,6 +50,51 @@ $('#deleteItem').on('click', function(e){
     });
 });
 
+$('#addItem').on('click', function(e){
+    e.preventDefault();
+    var href = document.getElementById('addThesisForm').getAttribute('action');
+    var thesis = document.querySelector('[name="thesis"]').value;
+    var subtitle = document.querySelector('[name="subtitle"]').value;
+    var member1 = document.querySelector('[name="member1"]').value;
+    var member2 = document.querySelector('[name="member2"]').value;
+    var member3 = document.querySelector('[name="member3"]').value;
+    var member4 = document.querySelector('[name="member4"]').value;
+    var member5 = document.querySelector('[name="member5"]').value;
+    var adviser1 = document.querySelector('[name="adviser1"]').value;
+    var adviser2 = document.querySelector('[name="adviser2"]').value;
+    var sentence = document.querySelector('[name="sentence"]').value;
+    var description = document.querySelector('[name="description"]').value;
+    var image = document.querySelector('[name="image"]').value;
+    var youtube = document.querySelector('[name="youtube"]').value;
+    var data = {
+      "thesis": thesis,
+      "subtitle": subtitle,
+      "member1": member1,
+      "member2": member2,
+      "member3": member3,
+      "member4": member4,
+      "member5": member5,
+      "adviser1": adviser1,
+      "adviser2": adviser2,
+      "sentence": sentence,
+      "description": description,
+      "image": image,
+      "youtube": youtube
+    };
+    console.log(data);
+    $.ajax({
+      url: href,
+      type: 'POST',
+      dataType: 'json',
+      data: data
+    }).done(function(){
+      console.log('something goes here');
+      $('#addAlertBox').html("<div class='col-md-offset-3 col-md-6 animate-box'><div class='alert alert-success'><i class='icon-check' style='font-size:15px; text-align:center'></i><strong>Request for adding entry sent! Waiting for approval.</strong></div></div>");
+    }).fail(function(res){
+      console.log('error message goes here');
+      $('#addAlertBox').html("<div class='col-md-offset-3 col-md-6 animate-box'><div class='alert alert-danger'><i class='icon-check' style='font-size:15px'></i><strong>Error sending request to add entry! "+res.message+"</strong></div></div>");
+    })
+});
 
 $(document).ready(function() {
 

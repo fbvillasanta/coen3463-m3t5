@@ -70,12 +70,13 @@ router.post('/new', function(req, res, next){
 
     if (thesis=="" || member1=="" || member2=="" || adviser1=="" || adviser2==""){
         // render error message
-        res.render('add', {title: 'Join', sent: 'no', error: 'Please fill up the required fields.'});
+        //res.render('add', {title: 'Join', sent: 'no', error: 'Please fill up the required fields.'});
+        res.send({'message': 'Please fill up the required fields.'});
         return;
     } else if (findcount > 0){
         console.log(findcount);
         // render error message
-        res.render('add', {title: 'Join', sent: 'no', error: 'Found a research with the same title.'});
+        //res.render('add', {title: 'Join', sent: 'no', error: 'Found a research with the same title.'});
         return;
     } else {
         var dataToSave = {
@@ -111,8 +112,8 @@ router.post('/new', function(req, res, next){
                 return;
             }
             console.log('Entry added successfully!');
-            res.render('add', {title: 'Join', sent: 'yes'});
-
+            //res.render('add', {title: 'Join', sent: 'yes'});
+            res.status(200).send({'message': 'success'});
         });
     }
 

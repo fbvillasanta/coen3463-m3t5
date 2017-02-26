@@ -11,22 +11,23 @@ block content
 								h1.mb30 Be part of our Collection
 		#fh5co-contact
 			.container
-				if sent == "yes"
-					.row
-						.col-md-offset-3.col-md-6.animate-box
-							.alert.alert-success
-								i.icon-check2(style='font-size:15px; text-align:center')
-								strong   Request for adding entry sent! Waiting for approval.
-				else if sent == "no"
-					.row
-						.col-md-offset-3.col-md-6.animate-box
-							.alert.alert-danger
-								i.icon-cross2(style='font-size:15px')
-								strong   Error sending request to add entry! #{error}
+				.row#addAlertBox
+				//- if sent == "yes"
+				//- 	.row#addAlertBox
+				//- 		.col-md-offset-3.col-md-6.animate-box
+				//- 			.alert.alert-success
+				//- 				i.icon-check2(style='font-size:15px; text-align:center')
+				//- 				strong   Request for adding entry sent! Waiting for approval.
+				//- else if sent == "no"
+				//- 	.row
+				//- 		.col-md-offset-3.col-md-6.animate-box
+				//- 			.alert.alert-danger
+				//- 				i.icon-cross2(style='font-size:15px')
+				//- 				strong   Error sending request to add entry! #{error}
 				.row
 					.col-md-offset-3.col-md-6.animate-box
 						h3 Thesis Information
-						form(action='/collection/new', method='post')
+						form#addThesisForm(action='/collection/new', method='post')
 							.row.form-group
 								.col-md-12
 									label(for='subject') Thesis Title
@@ -65,4 +66,4 @@ block content
 									input.form-control(type='text', name='youtube', placeholder='Thesis Youtube link (eg. https://youtube.com/yourvideo)')
 							.form-group
 
-								input.btn.btn-primary(type='submit', value='Submit')
+								input.btn.btn-primary#addItem(type='submit', value='Submit')
